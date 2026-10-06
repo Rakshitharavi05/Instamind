@@ -1,0 +1,3343 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>InstaMind AI - Dashboard</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <style>
+
+        /* =========================================
+           CONTENT INTELLIGENCE - AI UPGRADE
+        ========================================= */
+
+        .chart-card {
+            position: relative;
+            overflow: hidden;
+
+            transition:
+                transform 0.25s ease,
+                box-shadow 0.25s ease;
+        }
+
+        .chart-card:hover {
+            transform: translateY(-3px);
+
+            box-shadow:
+                0 15px 35px rgba(0, 0, 0, 0.08);
+        }
+
+        .chart-card h3 {
+            margin-bottom: 25px;
+        }
+
+
+        /* =========================================
+           CONTENT THEME BARS
+        ========================================= */
+
+        .bar-container {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .bar-label {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 8px;
+        }
+
+        .bar-label span:first-child {
+            font-weight: 600;
+        }
+
+        .bar-label span:last-child {
+            font-weight: 700;
+        }
+
+        .bar {
+            width: 100%;
+            height: 10px;
+
+            background: #eeeeee;
+
+            border-radius: 20px;
+
+            overflow: hidden;
+
+            margin-bottom: 8px;
+        }
+
+        .bar-fill {
+            height: 100%;
+
+            border-radius: 20px;
+
+            background:
+                linear-gradient(
+                    90deg,
+                    #6c63ff,
+                    #8f87ff
+                );
+
+            transition:
+                width 1s ease;
+        }
+
+
+        /* =========================================
+           AI BRAND PERSONALITY
+        ========================================= */
+
+        .ai-personality {
+            display: flex;
+
+            align-items: center;
+
+            gap: 18px;
+
+            padding: 24px;
+
+            border-radius: 18px;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #f7f5ff,
+                    #ffffff
+                );
+
+            border: 1px solid #e7e3ff;
+
+            min-height: 120px;
+        }
+
+
+        .personality-icon {
+            width: 58px;
+
+            height: 58px;
+
+            flex-shrink: 0;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            border-radius: 16px;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #6c63ff,
+                    #8f87ff
+                );
+
+            color: white;
+
+            font-size: 26px;
+
+            box-shadow:
+                0 8px 20px
+                rgba(108, 99, 255, 0.2);
+        }
+
+
+        .personality-content {
+            display: flex;
+
+            flex-direction: column;
+
+            gap: 8px;
+        }
+
+
+        .personality-content span {
+            font-size: 12px;
+
+            font-weight: 600;
+
+            text-transform: uppercase;
+
+            letter-spacing: 0.5px;
+
+            color: #777;
+        }
+
+
+        .personality-content strong {
+            font-size: 19px;
+
+            line-height: 1.4;
+
+            color: #222;
+        }
+
+
+        /* =========================================
+           AI INSIGHT UPGRADE
+        ========================================= */
+
+        .insight-box {
+            transition:
+                transform 0.25s ease,
+                box-shadow 0.25s ease;
+        }
+
+        .insight-box:hover {
+            transform: translateY(-2px);
+
+            box-shadow:
+                0 12px 30px rgba(0, 0, 0, 0.08);
+        }
+
+
+        /* =========================================
+           RESPONSIVE
+        ========================================= */
+
+        @media (max-width: 768px) {
+
+            .content-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .ai-personality {
+                padding: 18px;
+            }
+
+            .personality-content strong {
+                font-size: 16px;
+            }
+
+        }
+
+        /* =========================================
+   AI BUSINESS HEALTH
+========================================= */
+
+.health-card {
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 35px;
+
+    padding: 30px;
+
+    background: #ffffff;
+
+    border: 1px solid #e8e5ff;
+
+    border-radius: 22px;
+
+    box-shadow:
+        0 10px 30px rgba(0, 0, 0, 0.05);
+
+    transition:
+        transform 0.25s ease,
+        box-shadow 0.25s ease;
+}
+
+
+.health-card:hover {
+
+    transform: translateY(-3px);
+
+    box-shadow:
+        0 18px 40px rgba(0, 0, 0, 0.08);
+}
+
+
+.health-main {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 30px;
+}
+
+
+/* Score circle */
+
+.health-score-circle {
+
+    width: 150px;
+
+    height: 150px;
+
+    flex-shrink: 0;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    border-radius: 50%;
+
+    background:
+        conic-gradient(
+            #6c63ff 0deg,
+            #8f87ff 290deg,
+            #eeeeee 290deg,
+            #eeeeee 360deg
+        );
+
+    position: relative;
+}
+
+
+.health-score-circle::before {
+
+    content: "";
+
+    position: absolute;
+
+    width: 118px;
+
+    height: 118px;
+
+    background: #ffffff;
+
+    border-radius: 50%;
+}
+
+
+.health-score {
+
+    position: relative;
+
+    z-index: 2;
+
+    display: flex;
+
+    align-items: baseline;
+
+}
+
+
+.health-score strong {
+
+    font-size: 42px;
+
+    line-height: 1;
+
+    color: #222;
+}
+
+
+.health-score span {
+
+    font-size: 14px;
+
+    color: #888;
+
+    margin-left: 3px;
+}
+
+
+/* Health summary */
+
+.health-summary {
+
+    max-width: 600px;
+}
+
+
+.health-summary h3 {
+
+    margin: 5px 0 10px;
+
+    font-size: 24px;
+
+    color: #222;
+}
+
+
+.health-summary p:last-child {
+
+    margin: 0;
+
+    line-height: 1.7;
+
+    color: #666;
+}
+
+
+/* Metrics */
+
+.health-metrics {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(2, 1fr);
+
+    gap: 24px;
+}
+
+
+.health-metric {
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 10px;
+}
+
+
+.metric-header {
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+}
+
+
+.metric-header span {
+
+    font-size: 14px;
+
+    font-weight: 600;
+
+    color: #555;
+}
+
+
+.metric-header strong {
+
+    font-size: 14px;
+
+    color: #6c63ff;
+}
+
+
+.metric-bar {
+
+    width: 100%;
+
+    height: 9px;
+
+    background: #eeeeee;
+
+    border-radius: 20px;
+
+    overflow: hidden;
+}
+
+
+.metric-fill {
+
+    height: 100%;
+
+    border-radius: 20px;
+
+    background:
+        linear-gradient(
+            90deg,
+            #6c63ff,
+            #8f87ff
+        );
+
+    transition:
+        width 1s ease;
+}
+
+
+/* Mobile */
+
+@media (max-width: 768px) {
+
+    .health-main {
+
+        flex-direction: column;
+
+        align-items: flex-start;
+    }
+
+
+    .health-metrics {
+
+        grid-template-columns: 1fr;
+    }
+
+
+    .health-score-circle {
+
+        width: 130px;
+
+        height: 130px;
+    }
+
+
+    .health-score-circle::before {
+
+        width: 102px;
+
+        height: 102px;
+    }
+
+
+    .health-score strong {
+
+        font-size: 36px;
+    }
+
+}
+
+/* =========================================
+   QUICK AI METRICS
+========================================= */
+
+.quick-metrics {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(4, 1fr);
+
+    gap: 18px;
+}
+
+
+.metric-card {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 16px;
+
+    padding: 22px;
+
+    background: #ffffff;
+
+    border: 1px solid #eeeeee;
+
+    border-radius: 18px;
+
+    box-shadow:
+        0 8px 24px rgba(0, 0, 0, 0.04);
+
+    transition:
+        transform 0.25s ease,
+        box-shadow 0.25s ease;
+}
+
+
+.metric-card:hover {
+
+    transform: translateY(-4px);
+
+    box-shadow:
+        0 15px 32px rgba(0, 0, 0, 0.08);
+}
+
+
+.metric-icon {
+
+    width: 52px;
+
+    height: 52px;
+
+    flex-shrink: 0;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    border-radius: 15px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #f0eeff,
+            #f8f7ff
+        );
+
+    font-size: 24px;
+}
+
+
+.metric-content {
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 4px;
+
+    min-width: 0;
+}
+
+
+.metric-content span {
+
+    font-size: 10px;
+
+    font-weight: 700;
+
+    letter-spacing: 0.7px;
+
+    color: #888;
+}
+
+
+.metric-content strong {
+
+    font-size: 25px;
+
+    line-height: 1.2;
+
+    color: #222;
+}
+
+
+.metric-content small {
+
+    font-size: 11px;
+
+    color: #999;
+}
+
+
+/* =========================================
+   QUICK METRICS RESPONSIVE
+========================================= */
+
+@media (max-width: 1000px) {
+
+    .quick-metrics {
+
+        grid-template-columns:
+            repeat(2, 1fr);
+
+    }
+
+}
+
+
+@media (max-width: 600px) {
+
+    .quick-metrics {
+
+        grid-template-columns: 1fr;
+
+    }
+
+}
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <!-- =========================================
+         NAVBAR
+    ========================================= -->
+
+    <nav class="navbar">
+
+        <div class="logo">
+            InstaMind <span>AI</span>
+        </div>
+
+        <div class="nav-links">
+
+            <a href="index.html">
+                Home
+            </a>
+
+            <a href="#">
+                Dashboard
+            </a>
+
+        </div>
+
+    </nav>
+
+
+
+    <!-- =========================================
+         DASHBOARD
+    ========================================= -->
+
+    <main class="dashboard">
+
+
+        <!-- =========================================
+             DASHBOARD HEADER
+        ========================================= -->
+
+        <div class="dashboard-header">
+
+            <div>
+
+                <p class="small-title">
+                    AI BUSINESS INTELLIGENCE
+                </p>
+
+                <h1>
+                    Business Dashboard
+                </h1>
+
+                <p class="dashboard-description">
+                    AI-generated insights from the business profile.
+                </p>
+
+            </div>
+
+
+            <div class="analyzed-badge">
+                ✓ Analysis Complete
+            </div>
+
+        </div>
+
+
+
+        <!-- =========================================
+             BUSINESS OVERVIEW
+        ========================================= -->
+
+        <section class="dashboard-section">
+
+            <h2>
+                🏢 Business Overview
+            </h2>
+
+
+            <div class="overview-grid">
+
+
+                <div class="info-card">
+
+                    <span>
+                        Business Name
+                    </span>
+
+                    <h3>
+                        Bean & Brew Café
+                    </h3>
+
+                </div>
+
+
+                <div class="info-card">
+
+                    <span>
+                        Category
+                    </span>
+
+                    <h3>
+                        Food & Beverage
+                    </h3>
+
+                </div>
+
+
+                <div class="info-card">
+
+                    <span>
+                        Location
+                    </span>
+
+                    <h3>
+                        Chennai
+                    </h3>
+
+                </div>
+
+
+                <div class="info-card">
+
+                    <span>
+                        Business Type
+                    </span>
+
+                    <h3>
+                        Local Café
+                    </h3>
+
+                </div>
+
+
+            </div>
+
+
+            <div class="description-card">
+
+                <span>
+                    Business Description
+                </span>
+
+                <p>
+                    Bean & Brew Café is a local café offering
+                    specialty coffee, desserts and breakfast options
+                    for students and young professionals.
+                </p>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =========================================
+     AI BUSINESS HEALTH
+========================================= -->
+
+<section class="dashboard-section">
+
+    <h2>
+        🧠 AI Business Health
+    </h2>
+
+    <div class="health-card">
+
+        <div class="health-main">
+
+            <div class="health-score-circle">
+
+                <div class="health-score">
+
+                    <strong id="healthScore">
+                        0
+                    </strong>
+
+                    <span>
+                        / 100
+                    </span>
+
+                </div>
+
+            </div>
+
+            <div class="health-summary">
+
+                <p class="small-title">
+                    AI PERFORMANCE SCORE
+                </p>
+
+                <h3 id="healthStatus">
+                    Analyzing...
+                </h3>
+
+                <p id="healthDescription">
+                    Evaluating business profile,
+                    content strategy and audience alignment.
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <div class="health-metrics">
+
+            <div class="health-metric">
+
+                <div class="metric-header">
+
+                    <span>
+                        Content Strategy
+                    </span>
+
+                    <strong id="contentScore">
+                        0
+                    </strong>
+
+                </div>
+
+                <div class="metric-bar">
+
+                    <div
+                        id="contentScoreBar"
+                        class="metric-fill"
+                        style="width:0%">
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div class="health-metric">
+
+                <div class="metric-header">
+
+                    <span>
+                        Audience Alignment
+                    </span>
+
+                    <strong id="audienceScore">
+                        0
+                    </strong>
+
+                </div>
+
+                <div class="metric-bar">
+
+                    <div
+                        id="audienceScoreBar"
+                        class="metric-fill"
+                        style="width:0%">
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div class="health-metric">
+
+                <div class="metric-header">
+
+                    <span>
+                        Content Diversity
+                    </span>
+
+                    <strong id="diversityScore">
+                        0
+                    </strong>
+
+                </div>
+
+                <div class="metric-bar">
+
+                    <div
+                        id="diversityScoreBar"
+                        class="metric-fill"
+                        style="width:0%">
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div class="health-metric">
+
+                <div class="metric-header">
+
+                    <span>
+                        Brand Personality
+                    </span>
+
+                    <strong id="personalityScore">
+                        0
+                    </strong>
+
+                </div>
+
+                <div class="metric-bar">
+
+                    <div
+                        id="personalityScoreBar"
+                        class="metric-fill"
+                        style="width:0%">
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+<!-- =========================================
+     QUICK AI METRICS
+========================================= -->
+
+<section class="dashboard-section">
+
+    <div class="quick-metrics">
+
+        <!-- AI SCORE -->
+
+        <div class="metric-card">
+
+            <div class="metric-icon">
+                🧠
+            </div>
+
+            <div class="metric-content">
+
+                <span>
+                    AI SCORE
+                </span>
+
+                <strong id="quickAiScore">
+                    0
+                </strong>
+
+                <small>
+                    Overall business health
+                </small>
+
+            </div>
+
+        </div>
+
+
+        <!-- CONTENT DIVERSITY -->
+
+        <div class="metric-card">
+
+            <div class="metric-icon">
+                📊
+            </div>
+
+            <div class="metric-content">
+
+                <span>
+                    CONTENT DIVERSITY
+                </span>
+
+                <strong id="quickDiversity">
+                    0%
+                </strong>
+
+                <small>
+                    Content mix strength
+                </small>
+
+            </div>
+
+        </div>
+
+
+        <!-- AUDIENCE FOCUS -->
+
+        <div class="metric-card">
+
+            <div class="metric-icon">
+                👥
+            </div>
+
+            <div class="metric-content">
+
+                <span>
+                    AUDIENCE FOCUS
+                </span>
+
+                <strong id="quickAudience">
+                    0%
+                </strong>
+
+                <small>
+                    Target audience alignment
+                </small>
+
+            </div>
+
+        </div>
+
+
+        <!-- BRAND STRENGTH -->
+
+        <div class="metric-card">
+
+            <div class="metric-icon">
+                ✨
+            </div>
+
+            <div class="metric-content">
+
+                <span>
+                    BRAND STRENGTH
+                </span>
+
+                <strong id="quickBrand">
+                    0%
+                </strong>
+
+                <small>
+                    Brand personality signal
+                </small>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================
+     AI STRATEGY SIMULATOR
+========================================= -->
+
+<section class="dashboard-section">
+
+    <h2>
+        🧪 AI Strategy Simulator
+    </h2>
+
+    <div class="simulator-card">
+
+        <div class="simulator-header">
+
+            <div>
+                <p class="small-title">
+                    AI DECISION SUPPORT
+                </p>
+
+                <h3>
+                    What if you changed your content strategy?
+                </h3>
+
+                <p class="simulator-description">
+                    Experiment with different content strategies
+                    and see the AI-projected business impact.
+                </p>
+            </div>
+
+            <div class="simulator-badge">
+                ✨ AI Simulation
+            </div>
+
+        </div>
+
+
+        <!-- PRODUCT PROMOTION -->
+
+        <div class="strategy-control">
+
+            <div class="strategy-label">
+
+                <span>
+                    Product Promotion
+                </span>
+
+                <strong id="productValue">
+                    40%
+                </strong>
+
+            </div>
+
+            <input
+                type="range"
+                id="productSlider"
+                min="0"
+                max="100"
+                value="40"
+            >
+
+        </div>
+
+
+        <!-- EDUCATIONAL -->
+
+        <div class="strategy-control">
+
+            <div class="strategy-label">
+
+                <span>
+                    Educational Content
+                </span>
+
+                <strong id="educationValue">
+                    25%
+                </strong>
+
+            </div>
+
+            <input
+                type="range"
+                id="educationSlider"
+                min="0"
+                max="100"
+                value="25"
+            >
+
+        </div>
+
+
+        <!-- CUSTOMER -->
+
+        <div class="strategy-control">
+
+            <div class="strategy-label">
+
+                <span>
+                    Customer Content
+                </span>
+
+                <strong id="customerValue">
+                    20%
+                </strong>
+
+            </div>
+
+            <input
+                type="range"
+                id="customerSlider"
+                min="0"
+                max="100"
+                value="20"
+            >
+
+        </div>
+
+
+        <!-- BEHIND THE SCENES -->
+
+        <div class="strategy-control">
+
+            <div class="strategy-label">
+
+                <span>
+                    Behind the Scenes
+                </span>
+
+                <strong id="behindValue">
+                    15%
+                </strong>
+
+            </div>
+
+            <input
+                type="range"
+                id="behindSlider"
+                min="0"
+                max="100"
+                value="15"
+            >
+
+        </div>
+
+
+        <!-- SIMULATE BUTTON -->
+
+        <button
+            id="simulateButton"
+            class="simulate-button">
+
+            🧠 Simulate Strategy
+
+        </button>
+
+
+        <!-- SIMULATION RESULT -->
+
+        <div
+            id="simulationResult"
+            class="simulation-result">
+
+            <div class="score-comparison">
+
+                <div class="score-box">
+
+                    <span>
+                        CURRENT SCORE
+                    </span>
+
+                    <strong id="currentSimulationScore">
+                        73
+                    </strong>
+
+                    <small>
+                        / 100
+                    </small>
+
+                </div>
+
+
+                <div class="score-arrow">
+                    →
+                </div>
+
+
+                <div class="score-box projected">
+
+                    <span>
+                        PROJECTED SCORE
+                    </span>
+
+                    <strong id="projectedScore">
+                        73
+                    </strong>
+
+                    <small>
+                        / 100
+                    </small>
+
+                </div>
+
+            </div>
+
+
+            <div class="simulation-change">
+
+                <strong id="scoreChange">
+                    +0
+                </strong>
+
+                <span>
+                    projected improvement
+                </span>
+
+            </div>
+
+
+            <div class="simulation-insight">
+
+                <span>
+                    ✨ AI Prediction
+                </span>
+
+                <p id="simulationInsight">
+
+                    Adjust your content strategy and run
+                    the simulation to see the projected impact.
+
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+        <!-- =========================================
+             CONTENT INTELLIGENCE
+        ========================================= -->
+
+        <section class="dashboard-section">
+
+            <h2>
+                📊 Content Intelligence
+            </h2>
+
+
+            <div class="content-grid">
+
+
+                <!-- CONTENT THEMES -->
+
+                <div class="chart-card">
+
+                    <h3>
+                        Content Themes
+                    </h3>
+
+
+                    <div class="bar-container">
+
+
+                        <div class="bar-label">
+
+                            <span>
+                                Product Promotion
+                            </span>
+
+                            <span>
+                                40%
+                            </span>
+
+                        </div>
+
+
+                        <div class="bar">
+
+                            <div
+                                class="bar-fill"
+                                style="width:40%">
+                            </div>
+
+                        </div>
+
+
+
+                        <div class="bar-label">
+
+                            <span>
+                                Educational Content
+                            </span>
+
+                            <span>
+                                25%
+                            </span>
+
+                        </div>
+
+
+                        <div class="bar">
+
+                            <div
+                                class="bar-fill"
+                                style="width:25%">
+                            </div>
+
+                        </div>
+
+
+
+                        <div class="bar-label">
+
+                            <span>
+                                Customer Content
+                            </span>
+
+                            <span>
+                                20%
+                            </span>
+
+                        </div>
+
+
+                        <div class="bar">
+
+                            <div
+                                class="bar-fill"
+                                style="width:20%">
+                            </div>
+
+                        </div>
+
+
+
+                        <div class="bar-label">
+
+                            <span>
+                                Behind the Scenes
+                            </span>
+
+                            <span>
+                                15%
+                            </span>
+
+                        </div>
+
+
+                        <div class="bar">
+
+                            <div
+                                class="bar-fill"
+                                style="width:15%">
+                            </div>
+
+                        </div>
+
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- BRAND PERSONALITY -->
+
+                <div class="chart-card">
+
+                    <h3>
+                        Brand Personality
+                    </h3>
+
+
+                    <div class="personality ai-personality">
+
+
+                        <div class="personality-icon">
+                            ✨
+                        </div>
+
+
+                        <div class="personality-content">
+
+                            <span>
+                                AI-Detected Brand Personality
+                            </span>
+
+                            <strong id="brandPersonality">
+                                Analyzing...
+                            </strong>
+
+                        </div>
+
+
+                    </div>
+
+                </div>
+
+
+            </div>
+
+        </section>
+
+
+<!-- =========================================
+     AI INSIGHT
+========================================= -->
+
+<section class="ai-section">
+
+    <div class="ai-title">
+
+        <div class="ai-icon">
+            🤖
+        </div>
+
+        <div>
+
+            <p class="small-title">
+                AI BUSINESS ANALYST
+            </p>
+
+            <h2>
+                Intelligent Insight
+            </h2>
+
+        </div>
+
+    </div>
+
+
+    <div class="ai-insight-card">
+
+        <div class="ai-insight-header">
+
+            <div class="insight-status">
+                <span class="status-dot"></span>
+                AI Analysis Generated
+            </div>
+
+            <div class="insight-label">
+                BUSINESS INTELLIGENCE
+            </div>
+
+        </div>
+
+
+        <div class="ai-insight-content">
+
+            <div class="insight-quote">
+                "
+            </div>
+
+            <p id="aiInsightText">
+                Analyzing business profile...
+            </p>
+
+        </div>
+
+
+        <div class="ai-insight-footer">
+
+            <span>
+                ✨ Generated from business profile data
+            </span>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+        <!-- =========================================
+             AI RECOMMENDATIONS
+        ========================================= -->
+
+        <section class="dashboard-section">
+
+
+            <h2>
+                🚀 AI Recommendations
+            </h2>
+
+
+            <div class="recommendations">
+
+
+                <div class="recommendation">
+
+
+                    <div class="recommendation-number">
+                        01
+                    </div>
+
+
+                    <div>
+
+                        <h3>
+                            Increase Educational Content
+                        </h3>
+
+                        <p>
+                            Share coffee tips, preparation methods
+                            and useful information to provide
+                            additional value to the audience.
+                        </p>
+
+                    </div>
+
+
+                </div>
+
+
+
+                <div class="recommendation">
+
+
+                    <div class="recommendation-number">
+                        02
+                    </div>
+
+
+                    <div>
+
+                        <h3>
+                            Add Customer Stories
+                        </h3>
+
+                        <p>
+                            Feature customer experiences and
+                            testimonials to build trust and
+                            community engagement.
+                        </p>
+
+                    </div>
+
+
+                </div>
+
+
+
+                <div class="recommendation">
+
+
+                    <div class="recommendation-number">
+                        03
+                    </div>
+
+
+                    <div>
+
+                        <h3>
+                            Use More Short Videos
+                        </h3>
+
+                        <p>
+                            Create short-form videos showing
+                            products, preparation processes and
+                            behind-the-scenes activities.
+                        </p>
+
+                    </div>
+
+
+                </div>
+
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =========================================
+             FOOTER
+        ========================================= -->
+
+        <footer>
+
+            <p>
+                InstaMind AI • AI-Powered Business Intelligence
+            </p>
+
+        </footer>
+
+
+    </main>
+
+
+
+    <!-- =========================================
+         DYNAMIC DASHBOARD JAVASCRIPT
+    ========================================= -->
+
+    <script>
+
+
+/* =========================================================
+   INSTA MIND AI — DASHBOARD JAVASCRIPT
+========================================================= */
+
+
+/* =========================================================
+   LOAD ANALYSIS RESULT
+========================================================= */
+
+const result =
+    localStorage.getItem("analysisResult");
+
+
+if (!result) {
+
+    alert(
+        "No analysis data found. Please analyze a profile first."
+    );
+
+    window.location.href =
+        "index.html";
+
+} else {
+
+    const data =
+        JSON.parse(result);
+
+
+    /* =====================================================
+       BUSINESS OVERVIEW
+    ===================================================== */
+
+    const overviewCards =
+        document.querySelectorAll(
+            ".overview-grid .info-card h3"
+        );
+
+
+    if (overviewCards.length >= 4) {
+
+        overviewCards[0].textContent =
+            data.business_name || "Business";
+
+        overviewCards[1].textContent =
+            data.category || "Business";
+
+        overviewCards[2].textContent =
+            data.location || "Not available";
+
+        overviewCards[3].textContent =
+            data.business_type || "Business";
+
+    }
+
+
+    /* =====================================================
+       BUSINESS DESCRIPTION
+    ===================================================== */
+
+    const description =
+        document.querySelector(
+            ".description-card p"
+        );
+
+
+    if (description) {
+
+        description.textContent =
+            data.description ||
+            "Business profile information analyzed by InstaMind AI.";
+
+    }
+
+
+    /* =====================================================
+       CONTENT THEMES
+    ===================================================== */
+
+    const barLabels =
+        document.querySelectorAll(
+            ".bar-label"
+        );
+
+
+    const barFills =
+        document.querySelectorAll(
+            ".bar-fill"
+        );
+
+
+    if (data.content_themes) {
+
+        data.content_themes.forEach(
+            (theme, index) => {
+
+                if (barLabels[index]) {
+
+                    const spans =
+                        barLabels[index]
+                            .querySelectorAll("span");
+
+
+                    if (spans.length >= 2) {
+
+                        spans[0].textContent =
+                            theme.theme;
+
+                        spans[1].textContent =
+                            theme.percentage + "%";
+
+                    }
+
+                }
+
+
+                if (barFills[index]) {
+
+                    barFills[index].style.width =
+                        theme.percentage + "%";
+
+                }
+
+            }
+        );
+
+    }
+
+
+    /* =====================================================
+       BRAND PERSONALITY
+    ===================================================== */
+
+    const brandPersonality =
+        document.getElementById(
+            "brandPersonality"
+        );
+
+
+    if (brandPersonality) {
+
+        brandPersonality.textContent =
+            data.brand_personality ||
+            "Professional and customer-focused";
+
+    }
+
+
+    /* =====================================================
+       AI INSIGHT
+    ===================================================== */
+
+    const insight =
+        document.getElementById(
+            "aiInsightText"
+        );
+
+
+    if (insight) {
+
+        insight.textContent =
+            data.ai_insight ||
+            "AI analysis has been generated from the business profile.";
+
+    }
+
+
+    /* =====================================================
+       RECOMMENDATIONS
+    ===================================================== */
+
+    const recommendations =
+        document.querySelector(
+            ".recommendations"
+        );
+
+
+    if (
+        recommendations &&
+        Array.isArray(data.recommendations)
+    ) {
+
+        recommendations.innerHTML = "";
+
+
+        data.recommendations.forEach(
+            (recommendation, index) => {
+
+                const card =
+                    document.createElement(
+                        "div"
+                    );
+
+
+                card.className =
+                    "recommendation";
+
+
+                card.innerHTML = `
+
+                    <div class="recommendation-number">
+
+                        ${String(index + 1).padStart(2, "0")}
+
+                    </div>
+
+                    <div>
+
+                        <h3>
+                            AI Recommendation
+                        </h3>
+
+                        <p>
+                            ${recommendation}
+                        </p>
+
+                    </div>
+
+                `;
+
+
+                recommendations.appendChild(
+                    card
+                );
+
+            }
+        );
+
+    }
+
+
+    /* =====================================================
+       AI BUSINESS HEALTH
+    ===================================================== */
+
+    let healthScore = 73;
+
+
+    if (data.content_themes) {
+
+        const themes =
+            data.content_themes;
+
+
+        /* -----------------------------------------------
+           CONTENT STRATEGY SCORE
+        ----------------------------------------------- */
+
+        const largestTheme =
+            Math.max(
+                ...themes.map(
+                    theme =>
+                        Number(
+                            theme.percentage
+                        ) || 0
+                )
+            );
+
+
+        const contentScore =
+            Math.min(
+                100,
+                60 + largestTheme
+            );
+
+
+        /* -----------------------------------------------
+           CONTENT DIVERSITY
+        ----------------------------------------------- */
+
+        const diversityScore =
+            Math.min(
+                100,
+                themes.length * 20
+            );
+
+
+        /* -----------------------------------------------
+           AUDIENCE ALIGNMENT
+        ----------------------------------------------- */
+
+        const audienceScore =
+            data.target_audience &&
+            data.target_audience.length > 0
+                ? 85
+                : 60;
+
+
+        /* -----------------------------------------------
+           BRAND PERSONALITY
+        ----------------------------------------------- */
+
+        const personalityText =
+            data.brand_personality || "";
+
+
+        let personalityScore = 75;
+
+
+        if (personalityText.length >= 20) {
+
+            personalityScore = 90;
+
+        } else if (
+            personalityText.length >= 10
+        ) {
+
+            personalityScore = 82;
+
+        }
+
+
+        /* -----------------------------------------------
+           OVERALL HEALTH SCORE
+        ----------------------------------------------- */
+
+        healthScore =
+            Math.round(
+                (
+                    contentScore +
+                    diversityScore +
+                    audienceScore +
+                    personalityScore
+                ) / 4
+            );
+
+
+        healthScore =
+            Math.max(
+                0,
+                Math.min(
+                    100,
+                    healthScore
+                )
+            );
+
+
+        /* -----------------------------------------------
+           MAIN SCORE
+        ----------------------------------------------- */
+
+        const scoreElement =
+            document.getElementById(
+                "healthScore"
+            );
+
+
+        if (scoreElement) {
+
+            scoreElement.textContent =
+                healthScore;
+
+        }
+
+
+        /* -----------------------------------------------
+           STATUS
+        ----------------------------------------------- */
+
+        const statusElement =
+            document.getElementById(
+                "healthStatus"
+            );
+
+
+        const descriptionElement =
+            document.getElementById(
+                "healthDescription"
+            );
+
+
+        if (healthScore >= 85) {
+
+            if (statusElement) {
+
+                statusElement.textContent =
+                    "Excellent Business Presence";
+
+            }
+
+
+            if (descriptionElement) {
+
+                descriptionElement.textContent =
+                    "The profile shows strong content strategy, audience alignment and brand positioning.";
+
+            }
+
+        }
+
+        else if (healthScore >= 70) {
+
+            if (statusElement) {
+
+                statusElement.textContent =
+                    "Strong Business Presence";
+
+            }
+
+
+            if (descriptionElement) {
+
+                descriptionElement.textContent =
+                    "The profile has a solid foundation with opportunities to improve content diversity and engagement.";
+
+            }
+
+        }
+
+        else {
+
+            if (statusElement) {
+
+                statusElement.textContent =
+                    "Growing Business Presence";
+
+            }
+
+
+            if (descriptionElement) {
+
+                descriptionElement.textContent =
+                    "The profile has opportunities to strengthen its content strategy and audience engagement.";
+
+            }
+
+        }
+
+
+        /* -----------------------------------------------
+           UPDATE HEALTH METRIC
+        ----------------------------------------------- */
+
+        function updateMetric(
+            value,
+            numberId,
+            barId
+        ) {
+
+            const numberElement =
+                document.getElementById(
+                    numberId
+                );
+
+
+            const barElement =
+                document.getElementById(
+                    barId
+                );
+
+
+            if (numberElement) {
+
+                numberElement.textContent =
+                    value;
+
+            }
+
+
+            if (barElement) {
+
+                barElement.style.width =
+                    value + "%";
+
+            }
+
+        }
+
+
+        updateMetric(
+            contentScore,
+            "contentScore",
+            "contentScoreBar"
+        );
+
+
+        updateMetric(
+            audienceScore,
+            "audienceScore",
+            "audienceScoreBar"
+        );
+
+
+        updateMetric(
+            diversityScore,
+            "diversityScore",
+            "diversityScoreBar"
+        );
+
+
+        updateMetric(
+            personalityScore,
+            "personalityScore",
+            "personalityScoreBar"
+        );
+
+
+        /* =================================================
+           ANIMATED COUNTER
+        ================================================= */
+
+        function animateCounter(
+            element,
+            target,
+            suffix = ""
+        ) {
+
+            if (!element) {
+                return;
+            }
+
+
+            const duration = 1200;
+
+            const startTime =
+                performance.now();
+
+
+            function updateCounter(
+                currentTime
+            ) {
+
+                const elapsed =
+                    currentTime -
+                    startTime;
+
+
+                const progress =
+                    Math.min(
+                        elapsed / duration,
+                        1
+                    );
+
+
+                const easedProgress =
+                    1 -
+                    Math.pow(
+                        1 - progress,
+                        3
+                    );
+
+
+                const current =
+                    Math.round(
+                        target *
+                        easedProgress
+                    );
+
+
+                element.textContent =
+                    current +
+                    suffix;
+
+
+                if (progress < 1) {
+
+                    requestAnimationFrame(
+                        updateCounter
+                    );
+
+                }
+
+            }
+
+
+            requestAnimationFrame(
+                updateCounter
+            );
+
+        }
+
+
+        /* =================================================
+           QUICK AI METRICS
+        ================================================= */
+
+        const quickAiScore =
+            document.getElementById(
+                "quickAiScore"
+            );
+
+
+        const quickDiversity =
+            document.getElementById(
+                "quickDiversity"
+            );
+
+
+        const quickAudience =
+            document.getElementById(
+                "quickAudience"
+            );
+
+
+        const quickBrand =
+            document.getElementById(
+                "quickBrand"
+            );
+
+
+        animateCounter(
+            quickAiScore,
+            healthScore
+        );
+
+
+        animateCounter(
+            quickDiversity,
+            diversityScore,
+            "%"
+        );
+
+
+        animateCounter(
+            quickAudience,
+            audienceScore,
+            "%"
+        );
+
+
+        animateCounter(
+            quickBrand,
+            personalityScore,
+            "%"
+        );
+
+
+        /* =================================================
+           HEALTH SCORE CIRCLE
+        ================================================= */
+
+        const scoreCircle =
+            document.querySelector(
+                ".health-score-circle"
+            );
+
+
+        if (scoreCircle) {
+
+            const degrees =
+                healthScore * 3.6;
+
+
+            scoreCircle.style.background =
+                `conic-gradient(
+                    #6c63ff 0deg,
+                    #8f87ff ${degrees}deg,
+                    #eeeeee ${degrees}deg,
+                    #eeeeee 360deg
+                )`;
+
+        }
+
+    }
+
+
+    /* =====================================================
+       AI STRATEGY SIMULATOR
+    ===================================================== */
+
+
+    const productSlider =
+        document.getElementById(
+            "productSlider"
+        );
+
+
+    const educationSlider =
+        document.getElementById(
+            "educationSlider"
+        );
+
+
+    const customerSlider =
+        document.getElementById(
+            "customerSlider"
+        );
+
+
+    const behindSlider =
+        document.getElementById(
+            "behindSlider"
+        );
+
+
+    const productValue =
+        document.getElementById(
+            "productValue"
+        );
+
+
+    const educationValue =
+        document.getElementById(
+            "educationValue"
+        );
+
+
+    const customerValue =
+        document.getElementById(
+            "customerValue"
+        );
+
+
+    const behindValue =
+        document.getElementById(
+            "behindValue"
+        );
+
+
+    const simulateButton =
+        document.getElementById(
+            "simulateButton"
+        );
+
+
+    const currentSimulationScore =
+        document.getElementById(
+            "currentSimulationScore"
+        );
+
+
+    const projectedScoreElement =
+        document.getElementById(
+            "projectedScore"
+        );
+
+
+    const scoreChange =
+        document.getElementById(
+            "scoreChange"
+        );
+
+
+    const simulationInsight =
+        document.getElementById(
+            "simulationInsight"
+        );
+
+
+    /* =====================================================
+       CHECK SIMULATOR ELEMENTS
+    ===================================================== */
+
+    if (
+        productSlider &&
+        educationSlider &&
+        customerSlider &&
+        behindSlider
+    ) {
+
+
+        /* =================================================
+           UPDATE SLIDER TEXT
+        ================================================= */
+
+        function updateSliderValues() {
+
+            if (productValue) {
+
+                productValue.textContent =
+                    productSlider.value +
+                    "%";
+
+            }
+
+
+            if (educationValue) {
+
+                educationValue.textContent =
+                    educationSlider.value +
+                    "%";
+
+            }
+
+
+            if (customerValue) {
+
+                customerValue.textContent =
+                    customerSlider.value +
+                    "%";
+
+            }
+
+
+            if (behindValue) {
+
+                behindValue.textContent =
+                    behindSlider.value +
+                    "%";
+
+            }
+
+        }
+
+
+        /* =================================================
+           GET SLIDERS
+        ================================================= */
+
+        const sliders = [
+
+            productSlider,
+            educationSlider,
+            customerSlider,
+            behindSlider
+
+        ];
+
+
+        /* =================================================
+           KEEP TOTAL AT 100%
+        ================================================= */
+
+        function distributeStrategy(
+            changedSlider
+        ) {
+
+            const values =
+                sliders.map(
+                    slider =>
+                        Number(
+                            slider.value
+                        )
+                );
+
+
+            const changedIndex =
+                sliders.indexOf(
+                    changedSlider
+                );
+
+
+            const changedValue =
+                Math.max(
+                    0,
+                    Math.min(
+                        100,
+                        values[changedIndex]
+                    )
+                );
+
+
+            const remaining =
+                100 -
+                changedValue;
+
+
+            let otherTotal = 0;
+
+
+            values.forEach(
+                (value, index) => {
+
+                    if (
+                        index !==
+                        changedIndex
+                    ) {
+
+                        otherTotal +=
+                            value;
+
+                    }
+
+                }
+            );
+
+
+            let newValues = [];
+
+
+            sliders.forEach(
+                (slider, index) => {
+
+                    if (
+                        index ===
+                        changedIndex
+                    ) {
+
+                        newValues[index] =
+                            changedValue;
+
+                    }
+
+                    else {
+
+                        if (
+                            otherTotal === 0
+                        ) {
+
+                            newValues[index] =
+                                remaining /
+                                (
+                                    sliders.length -
+                                    1
+                                );
+
+                        }
+
+                        else {
+
+                            newValues[index] =
+                                (
+                                    values[index] /
+                                    otherTotal
+                                ) *
+                                remaining;
+
+                        }
+
+                    }
+
+                }
+            );
+
+
+            /* ---------------------------------------------
+               ROUND VALUES
+            --------------------------------------------- */
+
+            newValues =
+                newValues.map(
+                    value =>
+                        Math.round(value)
+                );
+
+
+            /* ---------------------------------------------
+               FIX ROUNDING
+            --------------------------------------------- */
+
+            let total =
+                newValues.reduce(
+                    (sum, value) =>
+                        sum + value,
+                    0
+                );
+
+
+            const difference =
+                100 -
+                total;
+
+
+            if (
+                difference !== 0
+            ) {
+
+                for (
+                    let i = 0;
+                    i < newValues.length;
+                    i++
+                ) {
+
+                    if (
+                        i !== changedIndex
+                    ) {
+
+                        newValues[i] +=
+                            difference;
+
+                        break;
+
+                    }
+
+                }
+
+            }
+
+
+            /* ---------------------------------------------
+               APPLY VALUES
+            --------------------------------------------- */
+
+            sliders.forEach(
+                (slider, index) => {
+
+                    slider.value =
+                        newValues[index];
+
+                }
+            );
+
+
+            updateSliderValues();
+
+        }
+
+
+        /* =================================================
+           INITIALIZE VALUES
+        ================================================= */
+
+        updateSliderValues();
+
+
+        /* =================================================
+           SLIDER EVENTS
+        ================================================= */
+
+        sliders.forEach(
+            slider => {
+
+                slider.addEventListener(
+                    "input",
+                    function () {
+
+                        distributeStrategy(
+                            this
+                        );
+
+                    }
+                );
+
+            }
+        );
+
+
+        /* =================================================
+           IDEAL AI STRATEGY
+        ================================================= */
+
+        const idealStrategy = {
+
+            product: 30,
+
+            education: 30,
+
+            customer: 25,
+
+            behind: 15
+
+        };
+
+
+        /* =================================================
+           BASELINE STRATEGY
+           
+           This is the starting strategy:
+           
+           Product       40%
+           Education     25%
+           Customer      20%
+           Behind        15%
+        ================================================= */
+
+        const baselineStrategy = {
+
+            product:
+                Number(
+                    productSlider.value
+                ),
+
+            education:
+                Number(
+                    educationSlider.value
+                ),
+
+            customer:
+                Number(
+                    customerSlider.value
+                ),
+
+            behind:
+                Number(
+                    behindSlider.value
+                )
+
+        };
+
+
+        /* =================================================
+           STRATEGY QUALITY FUNCTION
+        ================================================= */
+
+        function calculateStrategyQuality(
+            product,
+            education,
+            customer,
+            behind
+        ) {
+
+            const difference =
+
+                Math.abs(
+                    product -
+                    idealStrategy.product
+                ) +
+
+                Math.abs(
+                    education -
+                    idealStrategy.education
+                ) +
+
+                Math.abs(
+                    customer -
+                    idealStrategy.customer
+                ) +
+
+                Math.abs(
+                    behind -
+                    idealStrategy.behind
+                );
+
+
+            /*
+               Maximum practical difference is 200.
+
+               Convert difference into
+               a 0–100 quality score.
+            */
+
+            const quality =
+                Math.max(
+                    0,
+                    Math.round(
+                        100 -
+                        (
+                            difference /
+                            2
+                        )
+                    )
+                );
+
+
+            return quality;
+
+        }
+
+
+        /* =================================================
+           BASELINE QUALITY
+        ================================================= */
+
+        const baselineQuality =
+            calculateStrategyQuality(
+
+                baselineStrategy.product,
+
+                baselineStrategy.education,
+
+                baselineStrategy.customer,
+
+                baselineStrategy.behind
+
+            );
+
+
+        /* =================================================
+           SIMULATION
+        ================================================= */
+
+        if (simulateButton) {
+
+            simulateButton.addEventListener(
+                "click",
+                function () {
+
+
+                    /* -------------------------------------
+                       GET VALUES
+                    ------------------------------------- */
+
+                    const product =
+                        Number(
+                            productSlider.value
+                        );
+
+
+                    const education =
+                        Number(
+                            educationSlider.value
+                        );
+
+
+                    const customer =
+                        Number(
+                            customerSlider.value
+                        );
+
+
+                    const behind =
+                        Number(
+                            behindSlider.value
+                        );
+
+
+                    /* -------------------------------------
+                       VERIFY TOTAL
+                    ------------------------------------- */
+
+                    const total =
+                        product +
+                        education +
+                        customer +
+                        behind;
+
+
+                    if (total !== 100) {
+
+                        alert(
+                            "Strategy percentages must total 100%."
+                        );
+
+                        return;
+
+                    }
+
+
+                    /* -------------------------------------
+                       CURRENT SCORE
+                    ------------------------------------- */
+
+                    const healthScoreElement =
+                        document.getElementById(
+                            "healthScore"
+                        );
+
+
+                    let currentScore =
+                        Number(
+                            healthScoreElement
+                                ?.textContent
+                        );
+
+
+                    /*
+                       Fallback only if health score
+                       cannot be read.
+                    */
+
+                    if (
+                        !currentScore ||
+                        currentScore < 1
+                    ) {
+
+                        currentScore = 73;
+
+                    }
+
+
+                    /* -------------------------------------
+                       CALCULATE STRATEGY QUALITY
+                    ------------------------------------- */
+
+                    const strategyQuality =
+                        calculateStrategyQuality(
+
+                            product,
+
+                            education,
+
+                            customer,
+
+                            behind
+
+                        );
+
+
+                    /* -------------------------------------
+                       CALCULATE IMPACT
+                       
+                       Compare the new strategy
+                       against the original strategy.
+                    ------------------------------------- */
+
+                    const qualityDifference =
+                        strategyQuality -
+                        baselineQuality;
+
+
+                    /*
+                       Convert quality difference
+                       into a business score impact.
+                    */
+
+                    let impact =
+                        Math.round(
+                            qualityDifference /
+                            2
+                        );
+
+
+                    /*
+                       Keep impact realistic.
+                    */
+
+                    impact =
+                        Math.max(
+                            -20,
+                            Math.min(
+                                20,
+                                impact
+                            )
+                        );
+
+
+                    /* -------------------------------------
+                       PROJECTED SCORE
+                    ------------------------------------- */
+
+                    let projectedScore =
+                        currentScore +
+                        impact;
+
+
+                    projectedScore =
+                        Math.max(
+                            0,
+                            Math.min(
+                                100,
+                                projectedScore
+                            )
+                        );
+
+
+                    /* -------------------------------------
+                       CHANGE
+                    ------------------------------------- */
+
+                    const change =
+                        projectedScore -
+                        currentScore;
+
+
+                    /* -------------------------------------
+                       UPDATE CURRENT SCORE
+                    ------------------------------------- */
+
+                    if (
+                        currentSimulationScore
+                    ) {
+
+                        currentSimulationScore
+                            .textContent =
+                            currentScore;
+
+                    }
+
+
+                    /* -------------------------------------
+                       UPDATE PROJECTED SCORE
+                    ------------------------------------- */
+
+                    if (
+                        projectedScoreElement
+                    ) {
+
+                        projectedScoreElement
+                            .textContent =
+                            projectedScore;
+
+                    }
+
+
+                    /* -------------------------------------
+                       UPDATE CHANGE
+                    ------------------------------------- */
+
+                    if (
+                        scoreChange
+                    ) {
+
+                        if (
+                            change > 0
+                        ) {
+
+                            scoreChange
+                                .textContent =
+                                "+" +
+                                change;
+
+
+                            scoreChange.style.color =
+                                "#16a34a";
+
+                        }
+
+                        else if (
+                            change < 0
+                        ) {
+
+                            scoreChange
+                                .textContent =
+                                change;
+
+
+                            scoreChange.style.color =
+                                "#dc2626";
+
+                        }
+
+                        else {
+
+                            scoreChange
+                                .textContent =
+                                "0";
+
+
+                            scoreChange.style.color =
+                                "#888";
+
+                        }
+
+                    }
+
+
+                    /* -------------------------------------
+                       AI EXPLANATION
+                    ------------------------------------- */
+
+                    if (
+                        simulationInsight
+                    ) {
+
+                        if (
+                            strategyQuality >=
+                            95
+                        ) {
+
+                            simulationInsight
+                                .textContent =
+
+                                "🚀 Excellent strategy. The content mix is very close to the AI-recommended balance. Increasing educational and customer-focused content while maintaining moderate promotion can improve audience value, trust and engagement.";
+
+                        }
+
+                        else if (
+                            strategyQuality >=
+                            85
+                        ) {
+
+                            simulationInsight
+                                .textContent =
+
+                                "📈 Strong strategy. The content mix is relatively balanced. AI predicts a positive opportunity to improve engagement by strengthening educational and customer-focused content.";
+
+                        }
+
+                        else if (
+                            product >=
+                            60
+                        ) {
+
+                            simulationInsight
+                                .textContent =
+
+                                "⚠️ The strategy is heavily dependent on product promotion. AI recommends reducing promotional content and increasing educational, customer and behind-the-scenes content.";
+
+                        }
+
+                        else if (
+                            education < 15
+                        ) {
+
+                            simulationInsight
+                                .textContent =
+
+                                "💡 Educational content is relatively low. Adding useful tips, tutorials and informative posts could provide more value to the target audience.";
+
+                        }
+
+                        else if (
+                            customer < 15
+                        ) {
+
+                            simulationInsight
+                                .textContent =
+
+                                "👥 Customer-focused content is low. Adding testimonials, customer stories and user-generated content could strengthen trust and community engagement.";
+
+                        }
+
+                        else if (
+                            behind < 10
+                        ) {
+
+                            simulationInsight
+                                .textContent =
+
+                                "🎬 Behind-the-scenes content is low. Showing the people and processes behind the business can make the brand feel more authentic.";
+
+                        }
+
+                        else {
+
+                            simulationInsight
+                                .textContent =
+
+                                "🤖 This strategy provides a reasonable content balance. AI recommends continuing to experiment with educational and customer-focused content.";
+
+                        }
+
+                    }
+
+
+                    /* -------------------------------------
+                       SHOW STRATEGY QUALITY
+                       
+                       If these elements exist,
+                       they will automatically update.
+                    ------------------------------------- */
+
+                    const strategyQualityElement =
+                        document.getElementById(
+                            "strategyQuality"
+                        );
+
+
+                    if (
+                        strategyQualityElement
+                    ) {
+
+                        strategyQualityElement
+                            .textContent =
+                            strategyQuality +
+                            "%";
+
+                    }
+
+
+                    /* -------------------------------------
+                       IMPACT MESSAGE
+                    ------------------------------------- */
+
+                    const impactMessage =
+                        document.getElementById(
+                            "impactMessage"
+                        );
+
+
+                    if (
+                        impactMessage
+                    ) {
+
+                        if (
+                            change >= 8
+                        ) {
+
+                            impactMessage
+                                .textContent =
+                                "🚀 Strong positive impact predicted.";
+
+                        }
+
+                        else if (
+                            change > 0
+                        ) {
+
+                            impactMessage
+                                .textContent =
+                                "📈 Positive business impact predicted.";
+
+                        }
+
+                        else if (
+                            change === 0
+                        ) {
+
+                            impactMessage
+                                .textContent =
+                                "➖ Minimal change predicted.";
+
+                        }
+
+                        else {
+
+                            impactMessage
+                                .textContent =
+                                "⚠️ This strategy may reduce business performance.";
+
+                        }
+
+                    }
+
+                }
+            );
+
+        }
+
+
+        /* =================================================
+           AI RECOMMENDED STRATEGY BUTTON
+           
+           Works if you add this button:
+           
+           <button id="recommendedStrategyButton">
+        ================================================= */
+
+        const recommendedStrategyButton =
+            document.getElementById(
+                "recommendedStrategyButton"
+            );
+
+
+        if (
+            recommendedStrategyButton
+        ) {
+
+            recommendedStrategyButton
+                .addEventListener(
+                    "click",
+                    function () {
+
+
+                        productSlider.value =
+                            30;
+
+
+                        educationSlider.value =
+                            30;
+
+
+                        customerSlider.value =
+                            25;
+
+
+                        behindSlider.value =
+                            15;
+
+
+                        updateSliderValues();
+
+
+                        if (
+                            simulationInsight
+                        ) {
+
+                            simulationInsight
+                                .textContent =
+
+                                "✨ AI has applied the recommended strategy: 30% product promotion, 30% educational content, 25% customer content and 15% behind-the-scenes content. Click Simulate Strategy to see the projected impact.";
+
+                        }
+
+                    }
+                );
+
+        }
+
+    }
+
+}
+
+
+/* =========================================================
+   END OF DASHBOARD JAVASCRIPT
+========================================================= */
+
+</script>
+
+
+</body>
+
+</html>

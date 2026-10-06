@@ -1,0 +1,59 @@
+[
+    {
+        "username": "coffee",
+        "business_name": "Bean & Brew Café",
+        "category": "Food & Beverage",
+        "location": "Chennai, India",
+        "business_type": "Local Café",
+        "description": "A local café offering specialty coffee, desserts and breakfast options for students and young professionals.",
+        "services": [
+            "Coffee",
+            "Desserts",
+            "Breakfast",
+            "Beverages"
+        ],
+        "target_audience": [
+            "Students",
+            "Young Professionals",
+            "Coffee Lovers"
+        ]
+    },
+    {
+        "username": "fitness",
+        "business_name": "FitZone Studio",
+        "category": "Fitness & Wellness",
+        "location": "Chennai, India",
+        "business_type": "Fitness Studio",
+        "description": "A fitness studio offering personalized training and wellness programs.",
+        "services": [
+            "Personal Training",
+            "Group Workouts",
+            "Weight Training",
+            "Wellness Programs"
+        ],
+        "target_audience": [
+            "Young Adults",
+            "Fitness Enthusiasts",
+            "Working Professionals"
+        ]
+    },
+    {
+        "username": "fashion",
+        "business_name": "Urban Style",
+        "category": "Fashion",
+        "location": "Chennai, India",
+        "business_type": "Fashion Brand",
+        "description": "A modern fashion brand focused on contemporary clothing and lifestyle products.",
+        "services": [
+            "Clothing",
+            "Accessories",
+            "Online Shopping",
+            "Style Consulting"
+        ],
+        "target_audience": [
+            "Young Adults",
+            "Fashion Enthusiasts",
+            "Online Shoppers"
+        ]
+    }
+]
